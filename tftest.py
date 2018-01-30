@@ -29,12 +29,26 @@ import tensorflow as tf
 #
 # init = tf.global_variables_initializer()
 
-w = tf.Variable(tf.truncated_normal([700,10]))
+# w = tf.Variable(10)
+#
+# sess1 = tf.Session()
+# sess2 = tf.Session()
+#
+# sess1.run(w.initializer)
+# sess2.run(w.initializer)
+#
+# print(sess1.run(w.assign_add(10)))
+#
+# print(sess2.run(w.assign_sub(32)))
+#
+# print(sess1.run(w.assign_add(100)))
+# print(sess2.run(w.assign_add(154)))
+#
+# sess1.close()
+# sess2.close()
 
+a = tf.placeholder(tf.float32, shape=[3])
 
-with tf.Session() as sess:
-    sess.run(w.initializer)
-    print(w.eval())
+b = tf.constant([5, 5, 5], tf.float32)
 
-
-
+c = a + b
