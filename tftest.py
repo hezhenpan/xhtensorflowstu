@@ -43,7 +43,7 @@ X, Y = data.T[0], data.T[1]
 
 plt.plot(X, Y, 'bo', label='Real data')
 plt.plot(X, X * w + b, 'r', label='Predicted data')
-plt.legend()
+# plt.legend()
 plt.show()
 
 
