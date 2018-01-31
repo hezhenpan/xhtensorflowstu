@@ -27,9 +27,17 @@ optimizer = tf.train.GradientDescentOptimizer(learning_rate=0.001).minimize(loss
 with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
 
+    writer = tf.summary.FileWriter('./graphs', sess.graph)
+
     for i in range(100):
+        total_loss = 0
         for x, y in data:
-            sess.run([w, b])
+            _, lo = sess.run([optimizer, loss], feed_dict={X: x, Y: y})
+            total_loss += lo
+        print('Epoch {}: {}'.format(i, total_loss / n_samples))
+
+    writer.close()
+    w_value, b_value = sess.run([w, b])
 
 X, Y = data.T[0], data.T[1]
 
@@ -37,10 +45,6 @@ plt.plot(X, Y, 'bo', label='Real data')
 plt.plot(X, X * w + b, 'r', label='Predicted data')
 plt.legend()
 plt.show()
-
-
-
-
 
 
 
