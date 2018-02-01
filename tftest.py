@@ -34,17 +34,20 @@ with tf.Session() as sess:
         for x, y in data:
             _, lo = sess.run([optimizer, loss], feed_dict={X: x, Y: y})
             total_loss += lo
-        print('Epoch {}: {}'.format(i, total_loss / n_samples))
+            # print('Epoch {}: {}'.format(i, total_loss / n_samples))
 
     writer.close()
     w_value, b_value = sess.run([w, b])
 
 X, Y = data.T[0], data.T[1]
 
-plt.plot(X, Y, 'bo', label='Real data')
-plt.plot(X, X * w + b, 'r', label='Predicted data')
-# plt.legend()
+plt.plot(X, Y, 'ro')
 plt.show()
+
+# plt.plot(X, Y, 'bo', label='Real data')
+# plt.plot(X, X * w + b, 'r', label='Predicted data')
+# # plt.legend()
+# plt.show()
 
 
 
